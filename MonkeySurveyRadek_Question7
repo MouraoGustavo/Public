@@ -1,0 +1,37 @@
+/*First Step Create Tables */
+CREATE TABLE dogs (
+id INTEGER NOT NULL PRIMARY KEY,
+name VARCHAR(50) NOT NULL);
+
+CREATE TABLE cats (
+id INTEGER NOT NULL PRIMARY KEY,
+name VARCHAR(50) NOT NULL);
+
+/*Second step populate tables with no duplicated names */
+
+insert into dogs (id,name) values (1,'Rex');
+insert into dogs (id,name) values (2,'Luli');
+insert into dogs (id,name) values (3,'Caramelo');
+insert into dogs (id,name) values (4,'Spike');
+
+insert into cats (id,name) values (1,'Branco');
+insert into cats (id,name) values (2,'Amarelo');
+insert into cats (id,name) values (3,'Pipoca');
+insert into cats (id,name) values (4,'Bidoge');
+
+/*Run the Query */
+
+SELECT DISTINCT(name) FROM dogs
+UNION
+SELECT DISTINCT(NAME) FROM cats;
+
+/*Insert a duplicated name but with diferent id*/
+
+insert into dogs (id,name) values (5,'Caramelo');
+insert into cats (id,name) values (5,'Pipoca');
+
+/*Run the Query Once again,only one occurence of the pet name should return*/
+
+SELECT DISTINCT(name) FROM dogs
+UNION
+SELECT DISTINCT(NAME) FROM cats;
